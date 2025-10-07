@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Produksi TKJ - SMK Ma'arif NU Tirto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .nav-scroll {
+            transition: all 0.3s ease;
+        }
+        
+        .price-card {
+            transition: all 0.3s ease;
+        }
+        
+        .price-card:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+        
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .booking-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .live-chat {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .live-chat-btn {
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .live-chat-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .live-chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+        }
+        
+        .live-chat-window.active {
+            display: flex;
+        }
+        
+        .chat-header {
+            background: #25d366;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4ade80;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: -30px;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: #4ade80;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+        }
+        
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            top: 60%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .shape-3 {
+            bottom: 10%;
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 nav-scroll bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-laptop-code text-2xl text-green-600"></i>
+                    <span class="text-xl font-bold text-gray-800">UP TKJ SMK Ma'arif NU Tirto</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-green-600 transition">Beranda</a>
+                    <a href="#profil" class="text-gray-700 hover:text-green-600 transition">Profil</a>
+                    <a href="#tim" class="text-gray-700 hover:text-green-600 transition">Tim</a>
+                    <a href="#layanan" class="text-gray-700 hover:text-green-600 transition">Layanan</a>
+                    <a href="#harga" class="text-gray-700 hover:text-green-600 transition">Harga</a>
+                    <a href="#testimoni" class="text-gray-700 hover:text-green-600 transition">Testimoni</a>
+                    <a href="#berita" class="text-gray-700 hover:text-green-600 transition">Berita</a>
+                    <a href="#faq" class="text-gray-700 hover:text-green-600 transition">FAQ</a>
+                    <a href="#kontak" class="text-gray-700 hover:text-green-600 transition">Kontak</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md-hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-green-600">Beranda</a>
+                <a href="#profil" class="block py-2 text-gray-700 hover:text-green-600">Profil</a>
+                <a href="#tim" class="block py-2 text-gray-700 hover:text-green-600">Tim</a>
+                <a href="#layanan" class="block py-2 text-gray-700 hover:text-green-600">Layanan</a>
+                <a href="#harga" class="block py-2 text-gray-700 hover:text-green-600">Harga</a>
+                <a href="#testimoni" class="block py-2 text-gray-700 hover:text-green-600">Testimoni</a>
+                <a href="#berita" class="block py-2 text-gray-700 hover:text-green-600">Berita</a>
+                <a href="#faq" class="block py-2 text-gray-700 hover:text-green-600">FAQ</a>
+                <a href="#kontak" class="block py-2 text-gray-700 hover:text-green-600">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white pt-20 relative">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Unit Produksi TKJ</h1>
+                <p class="text-xl mb-8">SMK Ma'arif NU Tirto - Solusi Teknologi Informasi Terpercaya untuk Masyarakat</p>
+                
+                <!-- Kolom Foto di bawah judul -->
+                <div class="w-full max-w-md mx-auto mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-xl">
+                        <div class="bg-gray-100 h-64 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="https://z-cdn-media.chatglm.cn/files/fe9c32e5-0bbc-46d9-bbe5-20749530ab61_089331fc702e021fc37afb69bccd608c%20%281%29.png?auth_key=1791343114-1790999d3dd24d8b8c0b9995e5afbb65-0-5aaa06f13f9b11955a288ba2d0b854d5" alt="Logo SMK Ma'arif NU Tirto" class="w-full h-full object-contain">
+                        </div>
+                        <p class="mt-4 text-gray-800 font-medium">Unit Produksi TKJ SMK Ma'arif NU Tirto</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                    <a href="#layanan" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition text-center">
+                        Lihat Layanan
+                    </a>
+                    <a href="#booking" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition text-center">
+                        Booking Sekarang
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div>
+                        <h3 class="text-3xl font-bold">500+</h3>
+                        <p class="text-sm">Pelanggan Puas</p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">1000+</h3>
+                        <p class="text-sm">Proyek Selesai</p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">50+</h3>
+                        <p class="text-sm">Tim Profesional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tentang Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Unit Produksi TKJ SMK Ma'arif NU Tirto hadir untuk memberikan layanan teknologi informasi berkualitas dengan dukungan tenaga ahli dari siswa dan guru TKJ</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Visi & Misi</h3>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-green-600 mb-2">Visi</h4>
+                        <p class="text-gray-600">Menjadi unit produksi TKJ unggulan yang menghasilkan lulusan berkualitas dan layanan teknologi informasi terpercaya untuk masyarakat.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-green-600 mb-2">Misi</h4>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Memberikan layanan teknologi informasi berkualitas</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mengembangkan kompetensi siswa melalui praktik nyata</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Berkontribusi pada kemajuan teknologi di masyarakat</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Membangun kemitraan dengan industri dan masyarakat</li>
+                        </ul>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-green-100 p-4 rounded-lg text-center">
+                            <i class="fas fa-users text-3xl text-green-600 mb-2"></i>
+                            <h4 class="text-2xl font-bold text-green-600">50+</h4>
+                            <p class="text-gray-600">Siswa Aktif</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-lg text-center">
+                            <i class="fas fa-project-diagram text-3xl text-green-600 mb-2"></i>
+                            <h4 class="text-2xl font-bold text-green-600">100+</h4>
+                            <p class="text-gray-600">Proyek Selesai</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Fasilitas Kami</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-building text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Lab Komputer Modern</h4>
+                                    <p class="text-gray-600">Dilengkapi dengan 30 unit komputer terbaru dan jaringan internet berkecepatan tinggi</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-network-wired text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Lab Jaringan</h4>
+                                    <p class="text-gray-600">Fasilitas praktikum jaringan dengan router, switch, dan perangkat network lainnya</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-tools text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Workshop Hardware</h4>
+                                    <p class="text-gray-600">Tempat service dan perbaikan hardware dengan peralatan lengkap</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-chalkboard-teacher text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Ruang Pelatihan</h4>
+                                    <p class="text-gray-600">Ruang khusus untuk pelatihan teknologi informasi bagi masyarakat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Perjalanan Kami</h3>
+                <div class="max-w-3xl mx-auto">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800">2015 - Berdiri</h4>
+                            <p class="text-gray-600 text-sm">Unit Produksi TKJ resmi didirikan dengan 10 siswa pertama</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800">2017 - Ekspansi Layanan</h4>
+                            <p class="text-gray-600 text-sm">Menambah layanan pembuatan website dan jaringan komputer</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800">2019 - Sertifikasi</h4>
+                            <p class="text-gray-600 text-sm">Mendapatkan sertifikasi ISO 9001:2015 untuk manajemen mutu</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800">2021 - Digital Transformation</h4>
+                            <p class="text-gray-600 text-sm">Mengadopsi teknologi cloud dan AI untuk layanan yang lebih modern</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800">2024 - Sekarang</h4>
+                            <p class="text-gray-600 text-sm">Menjadi unit produksi TKJ terdepan dengan 50+ siswa aktif</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tim Section -->
+    <section id="tim" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tim Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Didedikasikan oleh tim profesional yang berpengalaman di bidang teknologi informasi</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="team-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Ahmad Fauzi, M.Kom</h3>
+                        <p class="text-green-600 font-medium">Kepala Unit</p>
+                        <p class="text-gray-600 text-sm mt-2">Spesialis Jaringan & Keamanan Siber</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Siti Nurhaliza, S.Kom</h3>
+                        <p class="text-green-600 font-medium">Wakil Kepala Unit</p>
+                        <p class="text-gray-600 text-sm mt-2">Spesialis Pengembangan Web</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Budi Santoso, S.T</h3>
+                        <p class="text-green-600 font-medium">Kepala Lab</p>
+                        <p class="text-gray-600 text-sm mt-2">Spesialis Hardware & Troubleshooting</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dewi Lestari, M.Pd</h3>
+                        <p class="text-green-600 font-medium">Koordinator Siswa</p>
+                        <p class="text-gray-600 text-sm mt-2">Spesialis Pendidikan & Pelatihan</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-gray-600">Dan 46+ siswa berprestasi lainnya yang siap melayani Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="layanan" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Layanan Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai layanan teknologi informasi untuk memenuhi kebutuhan Anda</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-desktop text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Service Komputer & Laptop</h3>
+                    <p class="text-gray-600 mb-4">Perbaikan hardware, software, instalasi sistem operasi, dan maintenance komputer/laptop</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Instalasi Windows/Linux</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Perbaikan Hardware</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Cleaning & Maintenance</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Data Recovery</li>
+                    </ul>
+                    <a href="#booking" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                        Pesan Layanan <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-network-wired text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Jaringan Komputer</h3>
+                    <p class="text-gray-600 mb-4">Pemasangan, konfigurasi, dan perbaikan jaringan komputer untuk rumah dan kantor</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Setup LAN/WAN</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Hotspot Management</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Network Security</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>MikroTik Configuration</li>
+                    </ul>
+                    <a href="#booking" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                        Pesan Layanan <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Pembuatan Website</h3>
+                    <p class="text-gray-600 mb-4">Desain dan pengembangan website profesional untuk bisnis, sekolah, dan personal</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Website Company Profile</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>E-commerce Development</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Website Sekolah</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>SEO Optimization</li>
+                    </ul>
+                    <a href="#booking" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                        Pesan Layanan <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-print text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Service Printer</h3>
+                    <p class="text-gray-600 mb-4">Perbaikan dan maintenance berbagai jenis printer untuk kebutuhan kantor dan rumah</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Reset Printer</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Ganti Sparepart</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Refill Tinta/Toner</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Maintenance Printer</li>
+                    </ul>
+                    <a href="#booking" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                        Pesan Layanan <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Keamanan Siber</h3>
+                    <p class="text-gray-600 mb-4">Pemeriksaan dan penguatan keamanan sistem dari ancaman siber</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Antivirus Installation</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Security Audit</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Data Recovery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Cybersecurity Training</li>
+                    </ul>
+                    <a href="#booking" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                        Pesan Layanan <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Pelatihan TKJ</h3>
+                    <p class="text-gray-600 mb-4">Pelatihan teknologi informasi untuk siswa, guru, dan masyarakat umum</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Basic Computer</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Web Design</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Network Administration</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Digital Marketing</li>
+                    </ul>
+                    <a href="#booking" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                        Pesan Layanan <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricelist Section -->
+    <section id="harga" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Daftar Harga Layanan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Harga kompetitif untuk setiap layanan teknologi informasi yang kami tawarkan</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden price-card">
+                    <div class="bg-green-600 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold">Paket Basic</h3>
+                        <p class="text-4xl font-bold mt-2">Rp 50K</p>
+                        <p class="text-sm">per layanan</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Instalasi Software</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Cleaning Komputer</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Basic Network Setup</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Konsultasi 30 menit</li>
+                        </ul>
+                        <button class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden price-card transform scale-105">
+                    <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold">Paket Professional</h3>
+                        <p class="text-4xl font-bold mt-2">Rp 150K</p>
+                        <p class="text-sm">per layanan</p>
+                        <span class="bg-yellow-400 text-gray-800 text-xs px-2 py-1 rounded-full">Most Popular</span>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Semua fitur Basic</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Hardware Repair</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Advanced Network</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Website 1 Page</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Garansi 1 Minggu</li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-2 rounded-lg hover:opacity-90 transition">
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden price-card">
+                    <div class="bg-green-800 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold">Paket Enterprise</h3>
+                        <p class="text-4xl font-bold mt-2">Rp 500K+</p>
+                        <p class="text-sm">per proyek</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Semua fitur Professional</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Full Website Development</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Network Infrastructure</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Security Audit</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Garansi 1 Bulan</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Support 24/7</li>
+                        </ul>
+                        <button class="w-full bg-green-800 text-white py-2 rounded-lg hover:bg-green-900 transition">
+                            Konsultasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Detail Harga Layanan</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="py-3 px-4">Layanan</th>
+                                <th class="py-3 px-4">Deskripsi</th>
+                                <th class="py-3 px-4 text-right">Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-semibold">Instalasi Windows</td>
+                                <td class="py-3 px-4">Instalasi ulang sistem operasi Windows</td>
+                                <td class="py-3 px-4 text-right">Rp 50.000</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-semibold">Service Hardware</td>
+                                <td class="py-3 px-4">Perbaikan komponen hardware (tidak termasuk sparepart)</td>
+                                <td class="py-3 px-4 text-right">Rp 75.000</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-semibold">Setup Jaringan</td>
+                                <td class="py-3 px-4">Konfigurasi jaringan LAN untuk rumah/kantor kecil</td>
+                                <td class="py-3 px-4 text-right">Rp 100.000</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-semibold">Website Company Profile</td>
+                                <td class="py-3 px-4">Pembuatan website sederhana 5-10 halaman</td>
+                                <td class="py-3 px-4 text-right">Rp 500.000</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4 font-semibold">Service Printer</td>
+                                <td class="py-3 px-4">Perbaikan printer (tidak termasuk sparepart)</td>
+                                <td class="py-3 px-4 text-right">Rp 60.000</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-semibold">Pelatihan Komputer</td>
+                                <td class="py-3 px-4">Pelatihan dasar komputer per sesi (2 jam)</td>
+                                <td class="py-3 px-4 text-right">Rp 100.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-gray-600 mt-4">*Harga dapat berubah sewaktu-waktu dan belum termasuk biaya sparepart jika diperlukan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Section -->
+    <section id="testimoni" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Apa Kata Mereka</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Testimoni dari pelanggan yang telah menggunakan layanan kami</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-200 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Budi Santoso</h4>
+                            <p class="text-sm text-gray-600">Pemilik Toko</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Layanan service komputer sangat memuaskan. Teknisi ramah dan profesional. Komputer saya kembali normal dalam waktu singkat."</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-200 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Siti Nurhaliza</h4>
+                            <p class="text-sm text-gray-600">Kepala Sekolah</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Website sekolah yang dibuat sangat bagus dan profesional. Tim UP TKJ sangat kooperatif dan responsif."</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-200 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Ahmad Fauzi</h4>
+                            <p class="text-sm text-gray-600">Wiraswasta</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Pelatihan jaringan komputer sangat bermanfaat. Materi disampaikan dengan jelas dan praktik langsung."</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Statistik Kepuasan Pelanggan</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-green-600 mb-2">98%</div>
+                        <p class="text-gray-600">Kepuasan Pelanggan</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-green-600 mb-2">4.9/5</div>
+                        <p class="text-gray-600">Rating Rata-rata</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-green-600 mb-2">500+</div>
+                        <p class="text-gray-600">Testimoni Positif</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-green-600 mb-2">99%</div>
+                        <p class="text-gray-600">Rekomendasi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita Section -->
+    <section id="berita" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Berita & Artikel</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Update terbaru seputar teknologi dan kegiatan Unit Produksi TKJ</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="news-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>15 November 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Workshop Artificial Intelligence untuk Siswa</h3>
+                        <p class="text-gray-600 mb-4">UP TKJ mengadakan workshop AI dengan narasumber dari industri teknologi ternama...</p>
+                        <a href="#" class="text-green-600 font-medium hover:text-green-700">
+                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>10 November 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Juara 1 LKS Tingkat Provinsi</h3>
+                        <p class="text-gray-600 mb-4">Tim UP TKJ berhasil meraih juara 1 dalam LKS bidang IT Network System Administration...</p>
+                        <a href="#" class="text-green-600 font-medium hover:text-green-700">
+                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>5 November 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Kerjasama dengan Perusahaan Teknologi</h3>
+                        <p class="text-gray-600 mb-4">UP TKJ menjalin kerjasama dengan perusahaan teknologi untuk magang siswa...</p>
+                        <a href="#" class="text-green-600 font-medium hover:text-green-700">
+                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                    Lihat Semua Berita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Jawaban untuk pertanyaan yang sering diajukan tentang layanan kami</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4 class="font-semibold text-gray-800">Bagaimana cara memesan layanan?</h4>
+                            <i class="fas fa-chevron-down text-gray-600"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Anda dapat memesan layanan melalui form kontak di website, WhatsApp, atau datang langsung ke lokasi kami. Tim kami akan segera merespon pesanan Anda.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4 class="font-semibold text-gray-800">Apakah ada garansi untuk layanan?</h4>
+                            <i class="fas fa-chevron-down text-gray-600"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Ya, kami memberikan garansi 1 minggu untuk layanan perbaikan dan 1 bulan untuk pembuatan website. Garansi meliputi perbaikan kembali jika masalah yang sama terjadi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4 class="font-semibold text-gray-800">Berapa lama waktu pengerjaan?</h4>
+                            <i class="fas fa-chevron-down text-gray-600"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Waktu pengerjaan tergantung jenis layanan. Untuk service komputer biasanya 1-2 hari, pembuatan website 1-2 minggu, dan setup jaringan 1-3 hari tergantung kompleksitas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4 class="font-semibold text-gray-800">Apakah melayani panggilan ke rumah/kantor?</h4>
+                            <i class="fas fa-chevron-down text-gray-600"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Ya, kami melayani panggilan ke rumah/kantor untuk area Pekalongan dan sekitarnya. Untuk area yang lebih jauh, dapat diskusikan terlebih dahulu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4 class="font-semibold text-gray-800">Bagaimana dengan pembayaran?</h4>
+                            <i class="fas fa-chevron-down text-gray-600"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Kami menerima pembayaran tunai, transfer bank, atau e-wallet. Untuk proyek besar, dapat dilakukan pembayaran bertahap sesuai kesepakatan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4 class="font-semibold text-gray-800">Apakah siswa yang mengerjakan sudah kompeten?</h4>
+                            <i class="fas fa-chevron-down text-gray-600"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Ya, semua siswa yang terlibat telah melalui pelatihan intensif dan dibimbing langsung oleh guru profesional. Mereka juga memiliki sertifikasi kompetensi yang relevan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Mitra & Kolaborasi</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami berkolaborasi dengan berbagai institusi untuk pengembangan teknologi</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-gray-200 h-16 flex items-center justify-center">
+                    <i class="fas fa-building text-3xl text-green-600"></i>
+                </div>
+                <div class="bg-gray-200 h-16 flex items-center justify-center">
+                    <i class="fas fa-building text-3xl text-green-600"></i>
+                </div>
+                <div class="bg-gray-200 h-16 flex items-center justify-center">
+                    <i class="fas fa-building text-3xl text-green-600"></i>
+                </div>
+                <div class="bg-gray-200 h-16 flex items-center justify-center">
+                    <i class="fas fa-building text-3xl text-green-600"></i>
+                </div>
+                <div class="bg-gray-200 h-16 flex items-center justify-center">
+                    <i class="fas fa-building text-3xl text-green-600"></i>
+                </div>
+                <div class="bg-gray-200 h-16 flex items-center justify-center">
+                    <i class="fas fa-building text-3xl text-green-600"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sertifikat & Penghargaan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Pengakuan atas kualitas layanan dan prestasi yang telah diraih</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="certificate-card">
+                    <i class="fas fa-certificate text-5xl text-green-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-800 mb-2">ISO 9001:2015</h4>
+                    <p class="text-sm text-gray-600">Sertifikasi Manajemen Mutu</p>
+                </div>
+                <div class="certificate-card">
+                    <i class="fas fa-award text-5xl text-green-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-800 mb-2">Best UP TKJ 2023</h4>
+                    <p class="text-sm text-gray-600">Penghargaan Tingkat Provinsi</p>
+                </div>
+                <div class="certificate-card">
+                    <i class="fas fa-medal text-5xl text-green-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-800 mb-2">Juara LKS 2024</h4>
+                    <p class="text-sm text-gray-600">Lomba Kompetensi Siswa</p>
+                </div>
+                <div class="certificate-card">
+                    <i class="fas fa-star text-5xl text-green-600 mb-4"></i>
+                    <h4 class="font-semibold text-gray-800 mb-2">5 Star Rating</h4>
+                    <p class="text-sm text-gray-600">Review Pelanggan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Video Profil</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kenali lebih dekat Unit Produksi TKJ SMK Ma'arif NU Tirto</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="video-container">
+                    <div class="bg-gray-200 w-full h-full flex items-center justify-center">
+                        <i class="fas fa-play-circle text-6xl text-green-600"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Booking Layanan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Pesan layanan teknologi informasi yang Anda butuhkan sekarang juga</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="booking-form">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Form Pemesanan</h3>
+                    <form id="bookingForm" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" id="booking-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">No. Telepon</label>
+                                <input type="tel" id="booking-phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="booking-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Layanan</label>
+                                <select id="booking-service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="service-komputer">Service Komputer & Laptop</option>
+                                    <option value="jaringan">Jaringan Komputer</option>
+                                    <option value="website">Pembuatan Website</option>
+                                    <option value="printer">Service Printer</option>
+                                    <option value="keamanan">Keamanan Siber</option>
+                                    <option value="pelatihan">Pelatihan TKJ</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Tanggal & Waktu</label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="date" id="booking-date" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                                <select id="booking-time" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                                    <option value="">Pilih Waktu</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Alamat</label>
+                            <textarea id="booking-address" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Catatan Tambahan</label>
+                            <textarea id="booking-note" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                            <i class="fas fa-calendar-check mr-2"></i> Booking Sekarang
+                        </button>
+                    </form>
+                    <div id="booking-message" class="mt-4 hidden"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Silakan hubungi kami untuk konsultasi atau pemesanan layanan teknologi informasi</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Informasi Kontak</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Alamat</h4>
+                                    <p class="text-gray-600">SMK Ma'arif NU Tirto<br>Jl. Wonoprojo No. 19, Pacar, Kec. Tirto<br>Kabupaten Pekalongan, Jawa Tengah 51151</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Telepon</h4>
+                                    <p class="text-gray-600">(0285) 123456<br>+62 812-3456-7890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <p class="text-gray-600">uptkj@smkmaarifnutirto.sch.id<br>info@smkmaarifnutirto.sch.id</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-green-600 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Jam Operasional</h4>
+                                    <p class="text-gray-600">Senin - Jumat: 08:00 - 16:00<br>Sabtu: 08:00 - 12:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-4">Ikuti Kami</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700 transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700 transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700 transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700 transition">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="#" class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700 transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">No. Telepon</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Layanan yang Dibutuhkan</label>
+                                <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="service-komputer">Service Komputer & Laptop</option>
+                                    <option value="jaringan">Jaringan Komputer</option>
+                                    <option value="website">Pembuatan Website</option>
+                                    <option value="printer">Service Printer</option>
+                                    <option value="keamanan">Keamanan Siber</option>
+                                    <option value="pelatihan">Pelatihan TKJ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Pesan</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                                Kirim Pesan
+                            </button>
+                        </form>
+                        <div id="form-message" class="mt-4 hidden"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map -->
+            <div class="mt-12 bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Lokasi Kami</h3>
+                <div class="h-96 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt text-6xl text-gray-400 mb-4"></i>
+                        <p class="text-gray-600">Peta lokasi SMK Ma'arif NU Tirto</p>
+                        <p class="text-sm text-gray-500 mt-2">Integration dengan Google Maps akan ditambahkan disini</p>
+                        <p class="text-sm text-gray-600 mt-2 font-medium">Jl. Wonoprojo No. 19, Pacar, Kec. Tirto, Kabupaten Pekalongan, Jawa Tengah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-laptop-code text-2xl text-green-400"></i>
+                        <span class="text-xl font-bold">UP TKJ SMK Ma'arif NU Tirto</span>
+                    </div>
+                    <p class="text-gray-400">Unit Produksi Teknik Komputer dan Jaringan yang siap melayani kebutuhan teknologi informasi Anda.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Layanan</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#layanan" class="hover:text-green-400 transition">Service Komputer</a></li>
+                        <li><a href="#layanan" class="hover:text-green-400 transition">Jaringan Komputer</a></li>
+                        <li><a href="#layanan" class="hover:text-green-400 transition">Pembuatan Website</a></li>
+                        <li><a href="#layanan" class="hover:text-green-400 transition">Pelatihan TKJ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#profil" class="hover:text-green-400 transition">Tentang Kami</a></li>
+                        <li><a href="#tim" class="hover:text-green-400 transition">Tim Kami</a></li>
+                        <li><a href="#harga" class="hover:text-green-400 transition">Harga</a></li>
+                        <li><a href="#kontak" class="hover:text-green-400 transition">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Dapatkan update terbaru tentang layanan kami</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg flex-1 focus:outline-none">
+                        <button type="submit" class="bg-green-600 px-4 py-2 rounded-r-lg hover:bg-green-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-400">Download Aplikasi Kami:</p>
+                        <div class="flex space-x-2 mt-2">
+                            <a href="#" class="bg-gray-800 px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition">
+                                <i class="fab fa-google-play mr-1"></i> Play Store
+                            </a>
+                            <a href="#" class="bg-gray-800 px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition">
+                                <i class="fab fa-apple mr-1"></i> App Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 UP TKJ SMK Ma'arif NU Tirto. All rights reserved. | 
+                    <a href="#" class="hover:text-green-400">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-green-400">Terms of Service</a>
+                </p>
+                <p class="mt-2 text-sm">Jl. Wonoprojo No. 19, Pacar, Kec. Tirto, Kabupaten Pekalongan, Jawa Tengah 51151</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-40">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Live Chat Widget -->
+    <div class="live-chat">
+        <div class="live-chat-btn" onclick="toggleLiveChat()">
+            <i class="fas fa-comments text-2xl"></i>
+        </div>
+        <div id="liveChatWindow" class="live-chat-window">
+            <div class="chat-header">
+                <div class="flex items-center">
+                    <i class="fas fa-headset mr-2"></i>
+                    <span>Live Chat Support</span>
+                </div>
+                <button onclick="toggleLiveChat()" class="text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="mb-4">
+                    <div class="bg-gray-100 p-3 rounded-lg inline-block">
+                        <p class="text-sm">Halo! Ada yang bisa kami bantu?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <div class="flex">
+                    <input type="text" id="chatInput" placeholder="Ketik pesan..." class="flex-1 px-3 py-2 border rounded-l-lg focus:outline-none">
+                    <button onclick="sendMessage()" class="bg-green-500 text-white px-4 py-2 rounded-r-lg hover:bg-green-600">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-24 bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition z-40 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            formMessage.innerHTML = `
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.
+                </div>
+            `;
+            formMessage.classList.remove('hidden');
+
+            // Reset form
+            contactForm.reset();
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Booking form handling
+        const bookingForm = document.getElementById('bookingForm');
+        const bookingMessage = document.getElementById('booking-message');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            bookingMessage.innerHTML = `
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Booking berhasil! Kami akan menghubungi Anda untuk konfirmasi.
+                </div>
+            `;
+            bookingMessage.classList.remove('hidden');
+
+            // Reset form
+            bookingForm.reset();
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                bookingMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Live Chat functionality
+        function toggleLiveChat() {
+            const chatWindow = document.getElementById('liveChatWindow');
+            chatWindow.classList.toggle('active');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            
+            if (input.value.trim() !== '') {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'mb-4 text-right';
+                userMessage.innerHTML = `
+                    <div class="bg-green-600 text-white p-3 rounded-lg inline-block">
+                        <p class="text-sm">${input.value}</p>
+                    </div>
+                `;
+                messages.appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Scroll to bottom
+                messages.scrollTop = messages.scrollHeight;
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'mb-4';
+                    botMessage.innerHTML = `
+                        <div class="bg-gray-100 p-3 rounded-lg inline-block">
+                            <p class="text-sm">Terima kasih telah menghubungi kami. Tim kami akan segera merespon pesan Anda.</p>
+                        </div>
+                    `;
+                    messages.appendChild(botMessage);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        // Enter key to send message
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const countUp = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => countUp(counter), 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        // Start counter when in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    </script>
+</body>
+</html>
